@@ -1,1031 +1,1538 @@
+//profile-title: base64:Q09OVkVSVEVEIEJZIFRWQw==
+//profile-update-interval: 1
+//subscription-userinfo: upload=0; download=0; total=10737418240000000; expire=2546249531
+//support-url: https://t.me/v2raycollector
+//profile-web-page-url: https://github.com/yebekhe/TelegramV2rayCollector
+
 {
-  "log": {
-    "disabled": false,
-    "level": "info",
-    "timestamp": true
-  },
-  "dns": {
-    "servers": [
-      {
-        "tag": "cloudflare",
-        "address": "tls://1.1.1.1",
-        "detour": "select"
-      },
-      {
-        "tag": "local",
-        "address": "https://1.12.12.12/dns-query",
-        "detour": "direct"
-      },
-      {
-        "tag": "block",
-        "address": "rcode://success"
-      }
+    "log": {
+        "disabled": false,
+        "level": "fatal",
+        "timestamp": true
+    },
+    "experimental": {
+        "clash_api": {
+            "external_controller": "0.0.0.0:9090",
+            "external_ui": "yacd",
+            "external_ui_download_url": "https:\/\/github.com\/MetaCubeX\/Yacd-meta\/archive\/gh-pages.zip",
+            "external_ui_download_detour": "direct",
+            "secret": "",
+            "default_mode": "rule",
+            "store_selected": true,
+            "cache_file": "clash.db"
+        }
+    },
+    "dns": {
+        "servers": [
+            {
+                "address": "https:\/\/dns.bitdefender.net\/dns-query",
+                "address_resolver": "dns-direct",
+                "strategy": "ipv4_only",
+                "tag": "dns-remote"
+            },
+            {
+                "address": "https:\/\/dns.bitdefender.net\/dns-query",
+                "address_resolver": "dns-local",
+                "detour": "direct",
+                "strategy": "ipv4_only",
+                "tag": "dns-direct"
+            },
+            {
+                "address": "local",
+                "detour": "direct",
+                "tag": "dns-local"
+            },
+            {
+                "address": "rcode:\/\/success",
+                "tag": "dns-block"
+            }
+        ],
+        "rules": [
+            {
+                "domain_suffix": [
+                    ".ir"
+                ],
+                "server": "dns-direct"
+            },
+            {
+                "outbound": "direct",
+                "server": "dns-direct",
+                "rewrite_ttl": 20
+            },
+            {
+                "outbound": "any",
+                "server": "dns-direct",
+                "rewrite_ttl": 20
+            }
+        ],
+        "reverse_mapping": true,
+        "strategy": "ipv4_only",
+        "independent_cache": true
+    },
+    "inbounds": [
+        {
+            "listen": "0.0.0.0",
+            "listen_port": 6450,
+            "override_address": "8.8.8.8",
+            "override_port": 53,
+            "tag": "dns-in",
+            "type": "direct"
+        },
+        {
+            "type": "tun",
+            "tag": "tun-in",
+            "domain_strategy": "",
+            "interface_name": "tun0",
+            "inet4_address": "172.19.0.1\/30",
+            "mtu": 9000,
+            "auto_route": true,
+            "strict_route": true,
+            "stack": "system",
+            "endpoint_independent_nat": true,
+            "sniff": true,
+            "sniff_override_destination": false
+        },
+        {
+            "domain_strategy": "",
+            "listen": "0.0.0.0",
+            "listen_port": 2080,
+            "sniff": true,
+            "sniff_override_destination": false,
+            "tag": "mixed-in",
+            "type": "mixed"
+        }
     ],
-    "rules": [
-      {
-        "server": "local",
-        "outbound": "any",
-        "disable_cache": true
-      },
-      {
-        "server": "cloudflare",
-        "clash_mode": "Global"
-      },
-      {
-        "server": "local",
-        "clash_mode": "Direct"
-      },
-      {
-        "geosite": [
-          "category-ads-all"
-        ],
-        "server": "block"
-      },
-      {
-        "geosite": [
-          "cn",
-          "apple@cn",
-          "category-games@cn",
-          "private"
-        ],
-        "domain_keyword": "ntp",
-        "server": "local"
-      },
-      {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "remote"
-      }
+    "outbounds": [
+        {
+            "tag": "proxy",
+            "type": "selector",
+            "outbounds": [
+                "URL-TEST",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 1",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 2",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 3",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 4",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 5",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 6",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 7",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 8",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 9",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 10",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 11",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 12",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 13",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 14",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 15",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 16",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 17",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 18",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 19",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 20",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 21",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 22",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 23",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 24",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 25",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 26",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 27",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 28",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 29",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 30",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 31",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 32",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 33",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 34",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 35",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 36",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 37",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 38",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 39",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 40",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 41",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 42",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 43",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 44",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 45",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 46",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 47",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 48",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 49",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 50",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 51",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 52",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 53",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 54",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 55",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 56",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 57",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 58",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 59",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 60"
+            ]
+        },
+        {
+            "tag": "URL-TEST",
+            "type": "urltest",
+            "outbounds": [
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 1",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 2",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 3",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 4",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 5",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 6",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 7",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 8",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 9",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 10",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 11",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 12",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 13",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 14",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 15",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 16",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 17",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 18",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 19",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 20",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 21",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 22",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 23",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 24",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 25",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 26",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 27",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 28",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 29",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 30",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 31",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 32",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 33",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 34",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 35",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 36",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 37",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 38",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 39",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 40",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 41",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 42",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 43",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 44",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 45",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 46",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 47",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 48",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 49",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 50",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 51",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 52",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 53",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 54",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 55",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 56",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 57",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 58",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 59",
+                "💻 Channel 🆔 : @AlienVPN402 👽 | 60"
+            ],
+            "url": "https:\/\/www.gstatic.com\/generate_204",
+            "interval": "3m",
+            "tolerance": 50
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 1",
+            "type": "trojan",
+            "server": "62.210.136.177",
+            "server_port": 1935,
+            "password": "392f8755-75e7-481e-927e-0f3aae34234e",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "$www.stream.shoppingitalia.live",
+                "insecure": true,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 2",
+            "type": "trojan",
+            "server": "45.14.174.200",
+            "server_port": 443,
+            "password": "a55f52b9-bd3d-466a-ba72-a085d79921e2",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "uosobshokabbskja.chikaveloiee.gq",
+                "insecure": true,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 3",
+            "type": "shadowsocks",
+            "server": "217.182.198.219",
+            "server_port": 3389,
+            "method": "aes-256-gcm",
+            "password": "Y6R9pAtvxxzmGC",
+            "plugin": "",
+            "plugin_opts": ""
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 4",
+            "type": "trojan",
+            "server": "51.210.182.170",
+            "server_port": 443,
+            "password": "bfb23be0-6c4f-11ee-8513-1239d0255272",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "zula.ir",
+                "insecure": true,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 5",
+            "type": "shadowsocks",
+            "server": "162.19.169.128",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "asdKkaskJKfnsa",
+            "plugin": "",
+            "plugin_opts": ""
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 6",
+            "type": "shadowsocks",
+            "server": "162.19.170.224",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "asdKkaskJKfnsa",
+            "plugin": "",
+            "plugin_opts": ""
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 7",
+            "type": "vless",
+            "server": "[::ffff:128.140.120.121]",
+            "server_port": 54819,
+            "uuid": "f99e30ed-1cb1-4057-89dc-a63827a47399",
+            "flow": "",
+            "packet_encoding": "xudp",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "ea.com",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                },
+                "reality": {
+                    "enabled": true,
+                    "public_key": "JF4vI--m3VrIt9wbsPRSSI0KrzwmPBpSmhlwN4SH9yw",
+                    "short_id": "8b49d5e2"
+                }
+            },
+            "transport": {
+                "type": "grpc",
+                "service_name": null,
+                "idle_timeout": "15s",
+                "ping_timeout": "15s",
+                "permit_without_stream": false
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 8",
+            "type": "trojan",
+            "server": "23.227.38.176",
+            "server_port": 443,
+            "password": "89ce124f-42d1-4c90-b9d2-bde2861ae615",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "sg1.pqjc.buzz",
+                "insecure": true,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 9",
+            "type": "vless",
+            "server": "138.68.144.102",
+            "server_port": 56895,
+            "uuid": "45984a7c-2035-4d71-8cfc-f0a9ac95c955",
+            "flow": "",
+            "packet_encoding": "xudp",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 10",
+            "type": "shadowsocks",
+            "server": "145.239.1.100",
+            "server_port": 7002,
+            "method": "aes-256-gcm",
+            "password": "RexnBgU7EV5ADxG",
+            "plugin": "",
+            "plugin_opts": ""
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 11",
+            "type": "trojan",
+            "server": "162.159.135.195",
+            "server_port": 443,
+            "password": "89ce124f-42d1-4c90-b9d2-bde2861ae615",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "jp6.pqjc.buzz",
+                "insecure": true,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 12",
+            "type": "vmess",
+            "server": "5.161.86.42",
+            "server_port": 3389,
+            "uuid": "9c050a86-d612-48f1-ec32-e573df08a1b7",
+            "security": "auto",
+            "alter_id": 0,
+            "global_padding": false,
+            "authenticated_length": true,
+            "packet_encoding": "",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 13",
+            "type": "vmess",
+            "server": "5.161.192.152",
+            "server_port": 3389,
+            "uuid": "9c050a86-d612-48f1-ec32-e573df08a1b7",
+            "security": "auto",
+            "alter_id": 0,
+            "global_padding": false,
+            "authenticated_length": true,
+            "packet_encoding": "",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 14",
+            "type": "vless",
+            "server": "[::ffff:91.107.181.102]",
+            "server_port": 29790,
+            "uuid": "a667f066-6991-4351-bc0c-8476d30acd96",
+            "flow": "",
+            "packet_encoding": "xudp",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "ea.com",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                },
+                "reality": {
+                    "enabled": true,
+                    "public_key": "gHpgh7fQoB9kzze4I6Pwvo8sXiAPIbja2ieX03dVjkE",
+                    "short_id": "1bd52d06"
+                }
+            },
+            "transport": {
+                "type": "grpc",
+                "service_name": null,
+                "idle_timeout": "15s",
+                "ping_timeout": "15s",
+                "permit_without_stream": false
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 15",
+            "type": "shadowsocks",
+            "server": "145.239.1.100",
+            "server_port": 9101,
+            "method": "aes-256-gcm",
+            "password": "e4FCWrgpkji3QY",
+            "plugin": "",
+            "plugin_opts": ""
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 16",
+            "type": "shadowsocks",
+            "server": "162.19.139.37",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "asdKkaskJKfnsa",
+            "plugin": "",
+            "plugin_opts": ""
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 17",
+            "type": "vless",
+            "server": "91.107.181.102",
+            "server_port": 29790,
+            "uuid": "a667f066-6991-4351-bc0c-8476d30acd96",
+            "flow": "",
+            "packet_encoding": "xudp",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "ea.com",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                },
+                "reality": {
+                    "enabled": true,
+                    "public_key": "gHpgh7fQoB9kzze4I6Pwvo8sXiAPIbja2ieX03dVjkE",
+                    "short_id": "1bd52d06"
+                }
+            },
+            "transport": {
+                "type": "grpc",
+                "service_name": null,
+                "idle_timeout": "15s",
+                "ping_timeout": "15s",
+                "permit_without_stream": false
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 18",
+            "type": "vmess",
+            "server": "5.161.127.110",
+            "server_port": 3389,
+            "uuid": "9c050a86-d612-48f1-ec32-e573df08a1b7",
+            "security": "auto",
+            "alter_id": 0,
+            "global_padding": false,
+            "authenticated_length": true,
+            "packet_encoding": "",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 19",
+            "type": "vmess",
+            "server": "5.161.180.119",
+            "server_port": 3389,
+            "uuid": "9c050a86-d612-48f1-ec32-e573df08a1b7",
+            "security": "auto",
+            "alter_id": 0,
+            "global_padding": false,
+            "authenticated_length": true,
+            "packet_encoding": "",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 20",
+            "type": "vmess",
+            "server": "95.216.147.138",
+            "server_port": 3389,
+            "uuid": "9c050a86-d612-48f1-ec32-e573df08a1b7",
+            "security": "auto",
+            "alter_id": 0,
+            "global_padding": false,
+            "authenticated_length": true,
+            "packet_encoding": "",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 21",
+            "type": "vmess",
+            "server": "5.161.203.143",
+            "server_port": 3389,
+            "uuid": "9c050a86-d612-48f1-ec32-e573df08a1b7",
+            "security": "auto",
+            "alter_id": 0,
+            "global_padding": false,
+            "authenticated_length": true,
+            "packet_encoding": "",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 22",
+            "type": "vless",
+            "server": "[::ffff:128.140.84.193]",
+            "server_port": 20304,
+            "uuid": "0816aff6-9396-40e4-b686-22598b65cce6",
+            "flow": "xtls-rprx-vision",
+            "packet_encoding": "xudp",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "sourceforge.net",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                },
+                "reality": {
+                    "enabled": true,
+                    "public_key": "N9RAetubJnOE7u0iwBUqFyGM7cP7GVfBeCWAmS_LzB4",
+                    "short_id": "7632b824"
+                }
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 23",
+            "type": "vless",
+            "server": "128.140.84.193",
+            "server_port": 20304,
+            "uuid": "0816aff6-9396-40e4-b686-22598b65cce6",
+            "flow": "xtls-rprx-vision",
+            "packet_encoding": "xudp",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "sourceforge.net",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                },
+                "reality": {
+                    "enabled": true,
+                    "public_key": "N9RAetubJnOE7u0iwBUqFyGM7cP7GVfBeCWAmS_LzB4",
+                    "short_id": "7632b824"
+                }
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 24",
+            "type": "shadowsocks",
+            "server": "145.239.1.100",
+            "server_port": 443,
+            "method": "aes-256-gcm",
+            "password": "pKEW8JPByTVTLtM",
+            "plugin": "",
+            "plugin_opts": ""
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 25",
+            "type": "shadowsocks",
+            "server": "145.239.1.100",
+            "server_port": 6679,
+            "method": "aes-256-gcm",
+            "password": "TEzjfAYq2IjtuoS",
+            "plugin": "",
+            "plugin_opts": ""
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 26",
+            "type": "trojan",
+            "server": "162.159.135.215",
+            "server_port": 443,
+            "password": "89ce124f-42d1-4c90-b9d2-bde2861ae615",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "sg1.pqjc.buzz",
+                "insecure": true,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 27",
+            "type": "trojan",
+            "server": "91.209.70.106",
+            "server_port": 443,
+            "password": "a77ad20a55",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "ru1.connecton.surf",
+                "insecure": true,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 28",
+            "type": "vmess",
+            "server": "51.210.110.248",
+            "server_port": 34310,
+            "uuid": "03873ff8-7e49-434e-8024-a92b6f1d2d7d",
+            "security": "auto",
+            "alter_id": 0,
+            "global_padding": false,
+            "authenticated_length": true,
+            "packet_encoding": "",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 29",
+            "type": "vless",
+            "server": "[::ffff:128.140.81.161]",
+            "server_port": 36121,
+            "uuid": "9729c073-ed6d-4392-a202-c207ef1abfd5",
+            "flow": "",
+            "packet_encoding": "xudp",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "ea.com",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                },
+                "reality": {
+                    "enabled": true,
+                    "public_key": "jPI33VVlQwusjrYcGyGvAP1O7lE7io2RpuY4aM_s5ho",
+                    "short_id": "118ec04c"
+                }
+            },
+            "transport": {
+                "type": "grpc",
+                "service_name": null,
+                "idle_timeout": "15s",
+                "ping_timeout": "15s",
+                "permit_without_stream": false
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 30",
+            "type": "shadowsocks",
+            "server": "162.19.171.67",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "asdKkaskJKfnsa",
+            "plugin": "",
+            "plugin_opts": ""
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 31",
+            "type": "shadowsocks",
+            "server": "162.19.170.208",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "asdKkaskJKfnsa",
+            "plugin": "",
+            "plugin_opts": ""
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 32",
+            "type": "shadowsocks",
+            "server": "162.19.139.65",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "asdKkaskJKfnsa",
+            "plugin": "",
+            "plugin_opts": ""
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 33",
+            "type": "vmess",
+            "server": "157.90.122.247",
+            "server_port": 3389,
+            "uuid": "9c050a86-d612-48f1-ec32-e573df08a1b7",
+            "security": "auto",
+            "alter_id": 0,
+            "global_padding": false,
+            "authenticated_length": true,
+            "packet_encoding": "",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 34",
+            "type": "vmess",
+            "server": "104.238.158.152",
+            "server_port": 2096,
+            "uuid": "3f9cf9f3-a8d4-4999-dd5e-8068fdc0c37e",
+            "security": "auto",
+            "alter_id": 0,
+            "global_padding": false,
+            "authenticated_length": true,
+            "packet_encoding": "",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "transport": {
+                "type": "ws",
+                "path": "\/",
+                "headers": {
+                    "Host": "internet.life.com.by"
+                },
+                "max_early_data": 0,
+                "early_data_header_name": "Sec-WebSocket-Protocol"
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 35",
+            "type": "vmess",
+            "server": "104.238.158.152",
+            "server_port": 2087,
+            "uuid": "d5350465-ab63-4d30-ebda-5cbe0751cbd6",
+            "security": "auto",
+            "alter_id": 0,
+            "global_padding": false,
+            "authenticated_length": true,
+            "packet_encoding": "",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "transport": {
+                "type": "ws",
+                "path": "\/",
+                "headers": {
+                    "Host": "internet.life.com.by"
+                },
+                "max_early_data": 0,
+                "early_data_header_name": "Sec-WebSocket-Protocol"
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 36",
+            "type": "vmess",
+            "server": "5.161.214.113",
+            "server_port": 3389,
+            "uuid": "9c050a86-d612-48f1-ec32-e573df08a1b7",
+            "security": "auto",
+            "alter_id": 0,
+            "global_padding": false,
+            "authenticated_length": true,
+            "packet_encoding": "",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 37",
+            "type": "vless",
+            "server": "157.90.144.211",
+            "server_port": 443,
+            "uuid": "6c6a1474-a170-4947-b491-cf0384295ec3",
+            "flow": "",
+            "packet_encoding": "xudp",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "dash.cloudflare.com",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "firefox"
+                },
+                "reality": {
+                    "enabled": true,
+                    "public_key": "KuZOpuz0L4H-VNikILS8NP9oA6Ra9uTGEZLHH0FODFM",
+                    "short_id": "83cdb009"
+                }
+            },
+            "transport": {
+                "type": "grpc",
+                "service_name": null,
+                "idle_timeout": "15s",
+                "ping_timeout": "15s",
+                "permit_without_stream": false
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 38",
+            "type": "vless",
+            "server": "5.75.238.19",
+            "server_port": 2087,
+            "uuid": "980594a8-6e6c-41e7-db61-78efc31d5ab0",
+            "flow": "",
+            "packet_encoding": "xudp",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "greenpepper.ir",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "firefox"
+                },
+                "reality": {
+                    "enabled": true,
+                    "public_key": "WnT8w6Vtfzx2u47S6hTHPRAPn3myMXmqsyx__R_GFyE",
+                    "short_id": "638ca3d3"
+                }
+            },
+            "transport": {
+                "type": "grpc",
+                "service_name": null,
+                "idle_timeout": "15s",
+                "ping_timeout": "15s",
+                "permit_without_stream": false
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 39",
+            "type": "vless",
+            "server": "128.140.114.39",
+            "server_port": 53285,
+            "uuid": "caafb022-ed9a-47a5-f35f-cffe760c9d22",
+            "flow": "xtls-rprx-vision",
+            "packet_encoding": "xudp",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "eset.com",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                },
+                "reality": {
+                    "enabled": true,
+                    "public_key": "mbok0ZF27k8XOyqh6r_hwou60jUhw7vctMjlQdsj_Ec",
+                    "short_id": "3282a4"
+                }
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 40",
+            "type": "vless",
+            "server": "91.151.93.69",
+            "server_port": 8080,
+            "uuid": "e5f264b2-4ef8-41b8-835e-c0be22b2f1b4",
+            "flow": "",
+            "packet_encoding": "xudp",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "haendlerbund.de",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                },
+                "reality": {
+                    "enabled": true,
+                    "public_key": "UxvbIy3zbYQNftyNqZk7vTTjibN45vRmZ0MaJSIVQH8",
+                    "short_id": "47b8abb6"
+                }
+            },
+            "transport": {
+                "type": "grpc",
+                "service_name": "@UCIRANIR@UCIRANIR@UCIRANIR@UCIRANIR@UCIRANIR@UCIRANIR@UCIRANIR@UCIRANIR@UCIRANIR@UCIRANIR@UCIRANIR@UCIRANIR",
+                "idle_timeout": "15s",
+                "ping_timeout": "15s",
+                "permit_without_stream": false
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 41",
+            "type": "shadowsocks",
+            "server": "145.239.1.100",
+            "server_port": 7306,
+            "method": "aes-256-gcm",
+            "password": "FoOiGlkAA9yPEGP",
+            "plugin": "",
+            "plugin_opts": ""
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 42",
+            "type": "trojan",
+            "server": "198.244.252.93",
+            "server_port": 443,
+            "password": "c33883045c",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "uk1.connecton.surf",
+                "insecure": true,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 43",
+            "type": "trojan",
+            "server": "198.41.223.133",
+            "server_port": 443,
+            "password": "2e7d3f13-be1b-479c-94ff-0e95c2bd565d",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "2us4.pqjc.buzz",
+                "insecure": true,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 44",
+            "type": "trojan",
+            "server": "198.41.223.83",
+            "server_port": 443,
+            "password": "2e7d3f13-be1b-479c-94ff-0e95c2bd565d",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "2us3.pqjc.buzz",
+                "insecure": true,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 45",
+            "type": "trojan",
+            "server": "13.39.3.114",
+            "server_port": 22222,
+            "password": "telegram-id-directvpn",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "trj.rollingnext.co.uk",
+                "insecure": true,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 46",
+            "type": "trojan",
+            "server": "213.202.216.14",
+            "server_port": 443,
+            "password": "23391d1e-3567-4555-9e40-de87569d74f6",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "downloadde.xn--mes358acgm99l.com",
+                "insecure": true,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 47",
+            "type": "vmess",
+            "server": "37.152.183.155",
+            "server_port": 43363,
+            "uuid": "ef6a8e0a-9842-4745-8406-560734bd846e",
+            "security": "auto",
+            "alter_id": 0,
+            "global_padding": false,
+            "authenticated_length": true,
+            "packet_encoding": "",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 48",
+            "type": "vless",
+            "server": "104.31.16.65",
+            "server_port": 2095,
+            "uuid": "38ace213-5184-477b-ac3e-d800d0cf3cd9",
+            "flow": "",
+            "packet_encoding": "xudp",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "transport": {
+                "type": "ws",
+                "path": "\/",
+                "headers": {
+                    "Host": "de1.vlessx.xyz"
+                },
+                "max_early_data": 2048,
+                "early_data_header_name": "Sec-WebSocket-Protocol"
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 49",
+            "type": "vmess",
+            "server": "5.161.209.48",
+            "server_port": 3389,
+            "uuid": "9c050a86-d612-48f1-ec32-e573df08a1b7",
+            "security": "auto",
+            "alter_id": 0,
+            "global_padding": false,
+            "authenticated_length": true,
+            "packet_encoding": "",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 50",
+            "type": "vmess",
+            "server": "95.217.219.28",
+            "server_port": 3389,
+            "uuid": "9c050a86-d612-48f1-ec32-e573df08a1b7",
+            "security": "auto",
+            "alter_id": 0,
+            "global_padding": false,
+            "authenticated_length": true,
+            "packet_encoding": "",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 51",
+            "type": "vless",
+            "server": "128.140.78.78",
+            "server_port": 443,
+            "uuid": "ee1a92a0-936a-449a-bbe5-060ecfc057ea",
+            "flow": "xtls-rprx-vision",
+            "packet_encoding": "xudp",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "direct.playstation.com",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                },
+                "reality": {
+                    "enabled": true,
+                    "public_key": "SF3Hh2nJngYLNMf9_4gs045vCKpKu_0g3EogBDl0zj0",
+                    "short_id": "016796fc"
+                }
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 52",
+            "type": "vless",
+            "server": "195.201.228.3",
+            "server_port": 443,
+            "uuid": "54ce117a-fd26-4b2e-b540-15f95ba3cc63",
+            "flow": "",
+            "packet_encoding": "xudp",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "www.xbox.com",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                },
+                "reality": {
+                    "enabled": true,
+                    "public_key": "1_NaRFGvbJUim7_qlQ8Dibh_27d3X_p_w2xUvrGZlhg",
+                    "short_id": "751ba1a6"
+                }
+            },
+            "transport": {
+                "type": "grpc",
+                "service_name": null,
+                "idle_timeout": "15s",
+                "ping_timeout": "15s",
+                "permit_without_stream": false
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 53",
+            "type": "vless",
+            "server": "[::ffff:5.75.195.214]",
+            "server_port": 58504,
+            "uuid": "316ab888-9ad6-42ee-9658-bfd35ba379c7",
+            "flow": "",
+            "packet_encoding": "xudp",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "ea.com",
+                "insecure": false,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                },
+                "reality": {
+                    "enabled": true,
+                    "public_key": "H5nh4PxSapD2H_uyWz-2UMezLbLUSN6_XIDTcz5FWBU",
+                    "short_id": "07c2d39b"
+                }
+            },
+            "transport": {
+                "type": "grpc",
+                "service_name": null,
+                "idle_timeout": "15s",
+                "ping_timeout": "15s",
+                "permit_without_stream": false
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 54",
+            "type": "shadowsocks",
+            "server": "51.15.27.48",
+            "server_port": 989,
+            "method": "aes-256-cfb",
+            "password": "f8f7aCzcPKbsF8p3",
+            "plugin": "",
+            "plugin_opts": ""
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 55",
+            "type": "shadowsocks",
+            "server": "145.239.1.100",
+            "server_port": 5500,
+            "method": "aes-256-gcm",
+            "password": "KixLvKzwjekG00rm",
+            "plugin": "",
+            "plugin_opts": ""
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 56",
+            "type": "vmess",
+            "server": "185.126.1.155",
+            "server_port": 2083,
+            "uuid": "212bf56c-2203-40ee-abc7-9bdb6c39eca4",
+            "security": "auto",
+            "alter_id": 0,
+            "global_padding": false,
+            "authenticated_length": true,
+            "packet_encoding": "",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "transport": {
+                "type": "ws",
+                "path": "\/",
+                "headers": {
+                    "Host": "185.126.1.155"
+                },
+                "max_early_data": 0,
+                "early_data_header_name": "Sec-WebSocket-Protocol"
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 57",
+            "type": "shadowsocks",
+            "server": "145.239.1.100",
+            "server_port": 6697,
+            "method": "aes-256-gcm",
+            "password": "TEzjfAYq2IjtuoS",
+            "plugin": "",
+            "plugin_opts": ""
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 58",
+            "type": "trojan",
+            "server": "23.227.38.108",
+            "server_port": 443,
+            "password": "2e7d3f13-be1b-479c-94ff-0e95c2bd565d",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "sg1.pqjc.buzz",
+                "insecure": true,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 59",
+            "type": "trojan",
+            "server": "23.227.38.13",
+            "server_port": 443,
+            "password": "2e7d3f13-be1b-479c-94ff-0e95c2bd565d",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "pjp1.pqjc.buzz",
+                "insecure": true,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            }
+        },
+        {
+            "tag": "💻 Channel 🆔 : @AlienVPN402 👽 | 60",
+            "type": "trojan",
+            "server": "23.227.39.18",
+            "server_port": 443,
+            "password": "2e7d3f13-be1b-479c-94ff-0e95c2bd565d",
+            "multiplex": {
+                "enabled": false,
+                "protocol": "smux",
+                "max_streams": 32
+            },
+            "tls": {
+                "enabled": true,
+                "server_name": "pus1.pqjc.buzz",
+                "insecure": true,
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            }
+        },
+        {
+            "tag": "direct",
+            "type": "direct"
+        },
+        {
+            "tag": "bypass",
+            "type": "direct"
+        },
+        {
+            "tag": "block",
+            "type": "block"
+        },
+        {
+            "tag": "dns-out",
+            "type": "dns"
+        }
     ],
-    "strategy": "prefer_ipv4"
-  },
-  "inbounds": [
-    {
-      "sniff": true,
-      "type": "mixed",
-      "tag": "mixed-in",
-      "listen": "::",
-      "listen_port": 1080,
-      "set_system_proxy": true
+    "route": {
+        "auto_detect_interface": true,
+        "override_android_vpn": true,
+        "final": "proxy",
+        "geoip": {
+            "download_url": "https:\/\/github.com\/MiSaturo\/sing-box-geoip-ir\/releases\/latest\/download\/geoip.db",
+            "download_detour": "direct"
+        },
+        "geosite": {
+            "download_url": "https:\/\/github.com\/MasterKia\/iran-hosted-domains\/releases\/latest\/download\/iran-geosite.db",
+            "download_detour": "direct"
+        },
+        "rules": [
+            {
+                "outbound": "dns-out",
+                "port": [
+                    53
+                ]
+            },
+            {
+                "inbound": [
+                    "dns-in"
+                ],
+                "outbound": "dns-out"
+            },
+            {
+                "domain_suffix": [
+                    "ir"
+                ],
+                "outbound": "bypass"
+            },
+            {
+                "geoip": [
+                    "ir"
+                ],
+                "outbound": "bypass"
+            },
+            {
+                "geosite": [
+                    "ir"
+                ],
+                "outbound": "direct"
+            },
+            {
+                "geosite": [
+                    "other"
+                ],
+                "outbound": "direct"
+            },
+            {
+                "geosite": [
+                    "ads"
+                ],
+                "outbound": "block"
+            },
+            {
+                "ip_cidr": [
+                    "224.0.0.0\/3",
+                    "ff00::\/8"
+                ],
+                "outbound": "block",
+                "source_ip_cidr": [
+                    "224.0.0.0\/3",
+                    "ff00::\/8"
+                ]
+            }
+        ]
     }
-  ],
-  "outbounds": [
-    {
-      "server": "62.210.136.177",
-      "server_port": 1935,
-      "tls": {
-        "enabled": true,
-        "server_name": "$www.stream.shoppingitalia.live",
-        "insecure": true
-      },
-      "password": "392f8755-75e7-481e-927e-0f3aae34234e",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_1",
-      "type": "trojan"
-    },
-    {
-      "server": "162.159.135.235",
-      "server_port": 443,
-      "tls": {
-        "enabled": true,
-        "server_name": "sg1.pqjc.buzz",
-        "insecure": true
-      },
-      "password": "89ce124f-42d1-4c90-b9d2-bde2861ae615",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_2",
-      "type": "trojan"
-    },
-    {
-      "server": "104.21.12.87",
-      "server_port": 443,
-      "tls": {
-        "enabled": true,
-        "server_name": "series-v1.samanehha.co",
-        "insecure": true
-      },
-      "password": "0b65bb06-6b28-487a-8e3c-820dda51e977",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_3",
-      "type": "trojan"
-    },
-    {
-      "server": "217.182.198.219",
-      "server_port": 3389,
-      "password": "Y6R9pAtvxxzmGC",
-      "method": "aes-256-gcm",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_4",
-      "type": "shadowsocks"
-    },
-    {
-      "server": "51.210.182.170",
-      "server_port": 443,
-      "tls": {
-        "enabled": true,
-        "server_name": "zula.ir",
-        "insecure": true
-      },
-      "password": "bfb23be0-6c4f-11ee-8513-1239d0255272",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_5",
-      "type": "trojan"
-    },
-    {
-      "server": "95.217.219.73",
-      "server_port": 3389,
-      "uuid": "9c050a86-d612-48f1-ec32-e573df08a1b7",
-      "packet_encoding": "xudp",
-      "security": "auto",
-      "alter_id": 0,
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_6",
-      "type": "vmess"
-    },
-    {
-      "server": "138.68.144.102",
-      "server_port": 56655,
-      "tls": {
-        "enabled": true,
-        "server_name": "internet.life.com.by"
-      },
-      "transport": {
-        "path": "/",
-        "type": "ws",
-        "max_early_data": 4096,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      },
-      "uuid": "29a20e69-7641-4ae9-ccc6-8a3ff6c02fbc",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_7",
-      "type": "vless"
-    },
-    {
-      "server": "23.227.38.176",
-      "server_port": 443,
-      "tls": {
-        "enabled": true,
-        "server_name": "sg1.pqjc.buzz",
-        "insecure": true
-      },
-      "password": "89ce124f-42d1-4c90-b9d2-bde2861ae615",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_8",
-      "type": "trojan"
-    },
-    {
-      "server": "162.19.170.212",
-      "server_port": 443,
-      "password": "asdKkaskJKfnsa",
-      "method": "aes-256-cfb",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_9",
-      "type": "shadowsocks"
-    },
-    {
-      "server": "162.19.170.220",
-      "server_port": 443,
-      "password": "asdKkaskJKfnsa",
-      "method": "aes-256-cfb",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_10",
-      "type": "shadowsocks"
-    },
-    {
-      "server": "145.239.1.100",
-      "server_port": 7002,
-      "password": "RexnBgU7EV5ADxG",
-      "method": "aes-256-gcm",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_11",
-      "type": "shadowsocks"
-    },
-    {
-      "server": "162.159.135.195",
-      "server_port": 443,
-      "tls": {
-        "enabled": true,
-        "server_name": "jp6.pqjc.buzz",
-        "insecure": true
-      },
-      "password": "89ce124f-42d1-4c90-b9d2-bde2861ae615",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_12",
-      "type": "trojan"
-    },
-    {
-      "server": "65.21.177.138",
-      "server_port": 3389,
-      "uuid": "9c050a86-d612-48f1-ec32-e573df08a1b7",
-      "packet_encoding": "xudp",
-      "security": "auto",
-      "alter_id": 0,
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_13",
-      "type": "vmess"
-    },
-    {
-      "server": "5.104.108.120",
-      "server_port": 443,
-      "tls": {
-        "enabled": true,
-        "server_name": "20-24-33-134.nhost.00cdn.com",
-        "insecure": true
-      },
-      "password": "2a9abeb7-6f97-4d33-9069-f6e009d88455",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_14",
-      "type": "trojan"
-    },
-    {
-      "server": "162.19.138.149",
-      "server_port": 443,
-      "password": "asdKkaskJKfnsa",
-      "method": "aes-256-cfb",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_15",
-      "type": "shadowsocks"
-    },
-    {
-      "server": "65.108.251.89",
-      "server_port": 1518,
-      "tls": {
-        "enabled": true,
-        "server_name": "internet.life.com.by"
-      },
-      "uuid": "df1d2c83-d865-4afb-b18a-224e82e8a372",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_16",
-      "type": "vless"
-    },
-    {
-      "server": "5.161.71.180",
-      "server_port": 3389,
-      "uuid": "9c050a86-d612-48f1-ec32-e573df08a1b7",
-      "packet_encoding": "xudp",
-      "security": "auto",
-      "alter_id": 0,
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_17",
-      "type": "vmess"
-    },
-    {
-      "server": "145.239.1.100",
-      "server_port": 8009,
-      "password": "XKFKl2rULjIp74",
-      "method": "aes-256-gcm",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_18",
-      "type": "shadowsocks"
-    },
-    {
-      "server": "162.19.204.79",
-      "server_port": 443,
-      "password": "asdKkaskJKfnsa",
-      "method": "aes-256-cfb",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_19",
-      "type": "shadowsocks"
-    },
-    {
-      "server": "145.239.1.100",
-      "server_port": 2375,
-      "password": "faBAoD54k87UJG7",
-      "method": "aes-256-gcm",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_20",
-      "type": "shadowsocks"
-    },
-    {
-      "server": "65.21.51.0",
-      "server_port": 3389,
-      "uuid": "9c050a86-d612-48f1-ec32-e573df08a1b7",
-      "packet_encoding": "xudp",
-      "security": "auto",
-      "alter_id": 0,
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_21",
-      "type": "vmess"
-    },
-    {
-      "server": "49.13.89.149",
-      "server_port": 8443,
-      "tls": {
-        "enabled": true,
-        "server_name": "internet.life.com.by"
-      },
-      "uuid": "82288d03-2aef-4d86-ab3d-344dc3f4d16f",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_22",
-      "type": "vless"
-    },
-    {
-      "server": "128.140.84.193",
-      "server_port": 20304,
-      "tls": {
-        "enabled": true,
-        "server_name": "sourceforge.net",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "N9RAetubJnOE7u0iwBUqFyGM7cP7GVfBeCWAmS_LzB4",
-          "short_id": "7632b824"
-        }
-      },
-      "uuid": "0816aff6-9396-40e4-b686-22598b65cce6",
-      "flow": "xtls-rprx-vision",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_23",
-      "type": "vless"
-    },
-    {
-      "server": "145.239.1.100",
-      "server_port": 5600,
-      "password": "Y6R9pAtvxxzmGC",
-      "method": "aes-256-gcm",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_24",
-      "type": "shadowsocks"
-    },
-    {
-      "server": "145.239.1.100",
-      "server_port": 8881,
-      "password": "kDWvXYZoTBcGkC4",
-      "method": "aes-256-gcm",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_25",
-      "type": "shadowsocks"
-    },
-    {
-      "server": "145.239.1.100",
-      "server_port": 6679,
-      "password": "TEzjfAYq2IjtuoS",
-      "method": "aes-256-gcm",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_26",
-      "type": "shadowsocks"
-    },
-    {
-      "server": "162.159.133.75",
-      "server_port": 443,
-      "tls": {
-        "enabled": true,
-        "server_name": "jp3.pqjc.buzz",
-        "insecure": true
-      },
-      "password": "89ce124f-42d1-4c90-b9d2-bde2861ae615",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_27",
-      "type": "trojan"
-    },
-    {
-      "server": "91.209.70.106",
-      "server_port": 443,
-      "tls": {
-        "enabled": true,
-        "server_name": "ru1.connecton.surf",
-        "insecure": true
-      },
-      "password": "a77ad20a55",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_28",
-      "type": "trojan"
-    },
-    {
-      "server": "162.19.170.208",
-      "server_port": 443,
-      "password": "asdKkaskJKfnsa",
-      "method": "aes-256-cfb",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_29",
-      "type": "shadowsocks"
-    },
-    {
-      "server": "172.233.56.23",
-      "server_port": 443,
-      "tls": {
-        "enabled": true,
-        "server_name": "www.speedtest.net",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "YFjzhEj6_FooW8d9awygj1qhM7XzOOuFIeWSjSQj_gc",
-          "short_id": "ddbf2d3c"
-        }
-      },
-      "transport": {
-        "type": "grpc"
-      },
-      "uuid": "acf520a4-3bf0-45d3-be1b-fe074f611971",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_30",
-      "type": "vless"
-    },
-    {
-      "server": "5.255.99.199",
-      "server_port": 443,
-      "tls": {
-        "enabled": true,
-        "server_name": "www.speedtest.net",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "KWWS5VFHEDy5ySr5oD3UFiopReFkr6rykVRXWEhwQA4",
-          "short_id": "c2041adb"
-        }
-      },
-      "uuid": "721e2b1c-ff6a-4009-b19e-2c4598b95da6",
-      "flow": "xtls-rprx-vision",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_31",
-      "type": "vless"
-    },
-    {
-      "server": "157.90.144.211",
-      "server_port": 443,
-      "tls": {
-        "enabled": true,
-        "server_name": "dash.cloudflare.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "KuZOpuz0L4H-VNikILS8NP9oA6Ra9uTGEZLHH0FODFM",
-          "short_id": "83cdb009"
-        }
-      },
-      "transport": {
-        "type": "grpc"
-      },
-      "uuid": "6c6a1474-a170-4947-b491-cf0384295ec3",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_32",
-      "type": "vless"
-    },
-    {
-      "server": "5.75.238.19",
-      "server_port": 2087,
-      "tls": {
-        "enabled": true,
-        "server_name": "greenpepper.ir",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "WnT8w6Vtfzx2u47S6hTHPRAPn3myMXmqsyx__R_GFyE",
-          "short_id": "638ca3d3"
-        }
-      },
-      "transport": {
-        "type": "grpc"
-      },
-      "uuid": "980594a8-6e6c-41e7-db61-78efc31d5ab0",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_33",
-      "type": "vless"
-    },
-    {
-      "server": "91.151.93.69",
-      "server_port": 8080,
-      "tls": {
-        "enabled": true,
-        "server_name": "haendlerbund.de",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "UxvbIy3zbYQNftyNqZk7vTTjibN45vRmZ0MaJSIVQH8",
-          "short_id": "47b8abb6"
-        }
-      },
-      "transport": {
-        "type": "grpc",
-        "service_name": "@UCIRANIR@UCIRANIR@UCIRANIR@UCIRANIR@UCIRANIR@UCIRANIR@UCIRANIR@UCIRANIR@UCIRANIR@UCIRANIR@UCIRANIR@UCIRANIR"
-      },
-      "uuid": "e5f264b2-4ef8-41b8-835e-c0be22b2f1b4",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_34",
-      "type": "vless"
-    },
-    {
-      "server": "95.179.234.43",
-      "server_port": 8442,
-      "uuid": "fb308feb-1b5a-4eb3-b700-396db8bb68fe",
-      "packet_encoding": "xudp",
-      "security": "auto",
-      "alter_id": 0,
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_35",
-      "type": "vmess"
-    },
-    {
-      "server": "13.41.86.114",
-      "server_port": 22222,
-      "tls": {
-        "enabled": true,
-        "server_name": "trj.rollingnext.co.uk",
-        "insecure": true
-      },
-      "password": "telegram-id-privatevpns",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_36",
-      "type": "trojan"
-    },
-    {
-      "server": "213.202.216.14",
-      "server_port": 443,
-      "tls": {
-        "enabled": true,
-        "server_name": "downloadde.xn--mes358acgm99l.com",
-        "insecure": true
-      },
-      "password": "23391d1e-3567-4555-9e40-de87569d74f6",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_37",
-      "type": "trojan"
-    },
-    {
-      "server": "159.69.192.198",
-      "server_port": 22810,
-      "tls": {
-        "enabled": true,
-        "server_name": "www.SpeedTest.Net",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "-z8ED_2uCFxbnzikLBYlg5nmh47GUBD2DrQq8vIZ6gM",
-          "short_id": "dc688c87"
-        }
-      },
-      "transport": {
-        "type": "grpc"
-      },
-      "uuid": "---Telegram-Parsashonam---",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_38",
-      "type": "vless"
-    },
-    {
-      "server": "104.31.16.65",
-      "server_port": 2095,
-      "tls": {
-        "enabled": true,
-        "server_name": "de1.vlessx.xyz"
-      },
-      "transport": {
-        "path": "/?ed=2048",
-        "type": "ws",
-        "max_early_data": 4096,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      },
-      "uuid": "38ace213-5184-477b-ac3e-d800d0cf3cd9",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_39",
-      "type": "vless"
-    },
-    {
-      "server": "172.67.1.110",
-      "server_port": 80,
-      "tls": {
-        "enabled": true,
-        "server_name": "vr4RlSu.kallepache.store"
-      },
-      "transport": {
-        "path": "/graphql",
-        "type": "ws",
-        "max_early_data": 4096,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      },
-      "uuid": "3cbaf436-93cc-4db1-be69-c5353076be15",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_40",
-      "type": "vless"
-    },
-    {
-      "server": "35.181.74.182",
-      "server_port": 22222,
-      "tls": {
-        "enabled": true,
-        "server_name": "trj.rollingnext.co.uk",
-        "insecure": true
-      },
-      "password": "telegram-id-privatevpns",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_41",
-      "type": "trojan"
-    },
-    {
-      "server": "3.68.41.190",
-      "server_port": 22222,
-      "tls": {
-        "enabled": true,
-        "server_name": "trj.rollingnext.co.uk",
-        "insecure": true
-      },
-      "password": "telegram-id-directvpn",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_42",
-      "type": "trojan"
-    },
-    {
-      "server": "18.135.0.179",
-      "server_port": 22222,
-      "tls": {
-        "enabled": true,
-        "server_name": "trj.rollingnext.co.uk",
-        "insecure": true
-      },
-      "password": "telegram-id-directvpn",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_43",
-      "type": "trojan"
-    },
-    {
-      "server": "162.19.170.221",
-      "server_port": 443,
-      "password": "asdKkaskJKfnsa",
-      "method": "aes-256-cfb",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_44",
-      "type": "shadowsocks"
-    },
-    {
-      "server": "162.19.170.225",
-      "server_port": 443,
-      "password": "asdKkaskJKfnsa",
-      "method": "aes-256-cfb",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_45",
-      "type": "shadowsocks"
-    },
-    {
-      "server": "141.95.125.11",
-      "server_port": 443,
-      "password": "asdKkaskJKfnsa",
-      "method": "aes-256-cfb",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_46",
-      "type": "shadowsocks"
-    },
-    {
-      "server": "65.109.172.203",
-      "server_port": 3389,
-      "uuid": "9c050a86-d612-48f1-ec32-e573df08a1b7",
-      "packet_encoding": "xudp",
-      "security": "auto",
-      "alter_id": 0,
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_47",
-      "type": "vmess"
-    },
-    {
-      "server": "95.217.219.28",
-      "server_port": 3389,
-      "uuid": "9c050a86-d612-48f1-ec32-e573df08a1b7",
-      "packet_encoding": "xudp",
-      "security": "auto",
-      "alter_id": 0,
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_48",
-      "type": "vmess"
-    },
-    {
-      "server": "5.75.194.156",
-      "server_port": 443,
-      "uuid": "3d1fab6e-3bd6-472b-8d9c-9934c04eaf40",
-      "packet_encoding": "xudp",
-      "security": "auto",
-      "alter_id": 0,
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_49",
-      "type": "vmess"
-    },
-    {
-      "server": "91.107.149.180",
-      "server_port": 443,
-      "uuid": "3d1fab6e-3bd6-472b-8d9c-9934c04eaf40",
-      "packet_encoding": "xudp",
-      "security": "auto",
-      "alter_id": 0,
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_50",
-      "type": "vmess"
-    },
-    {
-      "server": "91.107.137.185",
-      "server_port": 443,
-      "uuid": "d20e38ef-1a4d-4009-a00d-2f0d44e3c65a",
-      "packet_encoding": "xudp",
-      "security": "auto",
-      "alter_id": 0,
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_51",
-      "type": "vmess"
-    },
-    {
-      "server": "91.107.138.183",
-      "server_port": 443,
-      "uuid": "d20e38ef-1a4d-4009-a00d-2f0d44e3c65a",
-      "packet_encoding": "xudp",
-      "security": "auto",
-      "alter_id": 0,
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_52",
-      "type": "vmess"
-    },
-    {
-      "server": "5.75.197.2",
-      "server_port": 443,
-      "uuid": "3d1fab6e-3bd6-472b-8d9c-9934c04eaf40",
-      "packet_encoding": "xudp",
-      "security": "auto",
-      "alter_id": 0,
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_53",
-      "type": "vmess"
-    },
-    {
-      "server": "5.75.192.58",
-      "server_port": 443,
-      "uuid": "3d1fab6e-3bd6-472b-8d9c-9934c04eaf40",
-      "packet_encoding": "xudp",
-      "security": "auto",
-      "alter_id": 0,
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_54",
-      "type": "vmess"
-    },
-    {
-      "server": "91.107.144.202",
-      "server_port": 443,
-      "uuid": "3d1fab6e-3bd6-472b-8d9c-9934c04eaf40",
-      "packet_encoding": "xudp",
-      "security": "auto",
-      "alter_id": 0,
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_55",
-      "type": "vmess"
-    },
-    {
-      "server": "91.107.134.249",
-      "server_port": 443,
-      "uuid": "d20e38ef-1a4d-4009-a00d-2f0d44e3c65a",
-      "packet_encoding": "xudp",
-      "security": "auto",
-      "alter_id": 0,
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_56",
-      "type": "vmess"
-    },
-    {
-      "server": "185.220.204.38",
-      "server_port": 2096,
-      "tls": {
-        "enabled": true,
-        "server_name": "www.datadoghq.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "x-Zv8k40O3rJ8sjJknVpimNI4dhEk3WRCyKeRb5NeEU",
-          "short_id": "b756e372b9623b22"
-        }
-      },
-      "uuid": "282bed58-1451-419f-a5b3-ed6f65ab8850",
-      "flow": "xtls-rprx-vision",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_57",
-      "type": "vless"
-    },
-    {
-      "server": "168.119.172.47",
-      "server_port": 8080,
-      "tls": {
-        "enabled": true,
-        "server_name": "www.speedtest.net",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "4OTfR6IQ_6Z-5EiAi08sSfUjZtC30c2x6jl9BE9KFwg",
-          "short_id": "356dc0"
-        }
-      },
-      "transport": {
-        "type": "grpc",
-        "service_name": "@LIGHTNING6"
-      },
-      "uuid": "c1074320-2b1c-41e4-b21c-5bf4389872dc",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_58",
-      "type": "vless"
-    },
-    {
-      "server": "91.107.165.123",
-      "server_port": 8443,
-      "tls": {
-        "enabled": true,
-        "server_name": "cdn.discordapp.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        },
-        "reality": {
-          "enabled": true,
-          "public_key": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc"
-        }
-      },
-      "uuid": "db6407c3-c3cb-4937-89b1-0d2f7bfdfd95",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_59",
-      "type": "vless"
-    },
-    {
-      "server": "23.227.38.108",
-      "server_port": 443,
-      "tls": {
-        "enabled": true,
-        "server_name": "sg1.pqjc.buzz",
-        "insecure": true
-      },
-      "password": "2e7d3f13-be1b-479c-94ff-0e95c2bd565d",
-      "tag": "💻 Channel 🆔 : @AlienVPN402 👽_60",
-      "type": "trojan"
-    },
-    {
-      "tag": "select",
-      "type": "selector",
-      "default": "auto",
-      "outbounds": [
-        "💻 Channel 🆔 : @AlienVPN402 👽_1",
-        "💻 Channel 🆔 : @AlienVPN402 👽_2",
-        "💻 Channel 🆔 : @AlienVPN402 👽_3",
-        "💻 Channel 🆔 : @AlienVPN402 👽_4",
-        "💻 Channel 🆔 : @AlienVPN402 👽_5",
-        "💻 Channel 🆔 : @AlienVPN402 👽_6",
-        "💻 Channel 🆔 : @AlienVPN402 👽_7",
-        "💻 Channel 🆔 : @AlienVPN402 👽_8",
-        "💻 Channel 🆔 : @AlienVPN402 👽_9",
-        "💻 Channel 🆔 : @AlienVPN402 👽_10",
-        "💻 Channel 🆔 : @AlienVPN402 👽_11",
-        "💻 Channel 🆔 : @AlienVPN402 👽_12",
-        "💻 Channel 🆔 : @AlienVPN402 👽_13",
-        "💻 Channel 🆔 : @AlienVPN402 👽_14",
-        "💻 Channel 🆔 : @AlienVPN402 👽_15",
-        "💻 Channel 🆔 : @AlienVPN402 👽_16",
-        "💻 Channel 🆔 : @AlienVPN402 👽_17",
-        "💻 Channel 🆔 : @AlienVPN402 👽_18",
-        "💻 Channel 🆔 : @AlienVPN402 👽_19",
-        "💻 Channel 🆔 : @AlienVPN402 👽_20",
-        "💻 Channel 🆔 : @AlienVPN402 👽_21",
-        "💻 Channel 🆔 : @AlienVPN402 👽_22",
-        "💻 Channel 🆔 : @AlienVPN402 👽_23",
-        "💻 Channel 🆔 : @AlienVPN402 👽_24",
-        "💻 Channel 🆔 : @AlienVPN402 👽_25",
-        "💻 Channel 🆔 : @AlienVPN402 👽_26",
-        "💻 Channel 🆔 : @AlienVPN402 👽_27",
-        "💻 Channel 🆔 : @AlienVPN402 👽_28",
-        "💻 Channel 🆔 : @AlienVPN402 👽_29",
-        "💻 Channel 🆔 : @AlienVPN402 👽_30",
-        "💻 Channel 🆔 : @AlienVPN402 👽_31",
-        "💻 Channel 🆔 : @AlienVPN402 👽_32",
-        "💻 Channel 🆔 : @AlienVPN402 👽_33",
-        "💻 Channel 🆔 : @AlienVPN402 👽_34",
-        "💻 Channel 🆔 : @AlienVPN402 👽_35",
-        "💻 Channel 🆔 : @AlienVPN402 👽_36",
-        "💻 Channel 🆔 : @AlienVPN402 👽_37",
-        "💻 Channel 🆔 : @AlienVPN402 👽_38",
-        "💻 Channel 🆔 : @AlienVPN402 👽_39",
-        "💻 Channel 🆔 : @AlienVPN402 👽_40",
-        "💻 Channel 🆔 : @AlienVPN402 👽_41",
-        "💻 Channel 🆔 : @AlienVPN402 👽_42",
-        "💻 Channel 🆔 : @AlienVPN402 👽_43",
-        "💻 Channel 🆔 : @AlienVPN402 👽_44",
-        "💻 Channel 🆔 : @AlienVPN402 👽_45",
-        "💻 Channel 🆔 : @AlienVPN402 👽_46",
-        "💻 Channel 🆔 : @AlienVPN402 👽_47",
-        "💻 Channel 🆔 : @AlienVPN402 👽_48",
-        "💻 Channel 🆔 : @AlienVPN402 👽_49",
-        "💻 Channel 🆔 : @AlienVPN402 👽_50",
-        "💻 Channel 🆔 : @AlienVPN402 👽_51",
-        "💻 Channel 🆔 : @AlienVPN402 👽_52",
-        "💻 Channel 🆔 : @AlienVPN402 👽_53",
-        "💻 Channel 🆔 : @AlienVPN402 👽_54",
-        "💻 Channel 🆔 : @AlienVPN402 👽_55",
-        "💻 Channel 🆔 : @AlienVPN402 👽_56",
-        "💻 Channel 🆔 : @AlienVPN402 👽_57",
-        "💻 Channel 🆔 : @AlienVPN402 👽_58",
-        "💻 Channel 🆔 : @AlienVPN402 👽_59",
-        "💻 Channel 🆔 : @AlienVPN402 👽_60",
-        "auto"
-      ],
-      "interrupt_exist_connections": false
-    },
-    {
-      "tag": "auto",
-      "type": "urltest",
-      "outbounds": [
-        "💻 Channel 🆔 : @AlienVPN402 👽_1",
-        "💻 Channel 🆔 : @AlienVPN402 👽_2",
-        "💻 Channel 🆔 : @AlienVPN402 👽_3",
-        "💻 Channel 🆔 : @AlienVPN402 👽_4",
-        "💻 Channel 🆔 : @AlienVPN402 👽_5",
-        "💻 Channel 🆔 : @AlienVPN402 👽_6",
-        "💻 Channel 🆔 : @AlienVPN402 👽_7",
-        "💻 Channel 🆔 : @AlienVPN402 👽_8",
-        "💻 Channel 🆔 : @AlienVPN402 👽_9",
-        "💻 Channel 🆔 : @AlienVPN402 👽_10",
-        "💻 Channel 🆔 : @AlienVPN402 👽_11",
-        "💻 Channel 🆔 : @AlienVPN402 👽_12",
-        "💻 Channel 🆔 : @AlienVPN402 👽_13",
-        "💻 Channel 🆔 : @AlienVPN402 👽_14",
-        "💻 Channel 🆔 : @AlienVPN402 👽_15",
-        "💻 Channel 🆔 : @AlienVPN402 👽_16",
-        "💻 Channel 🆔 : @AlienVPN402 👽_17",
-        "💻 Channel 🆔 : @AlienVPN402 👽_18",
-        "💻 Channel 🆔 : @AlienVPN402 👽_19",
-        "💻 Channel 🆔 : @AlienVPN402 👽_20",
-        "💻 Channel 🆔 : @AlienVPN402 👽_21",
-        "💻 Channel 🆔 : @AlienVPN402 👽_22",
-        "💻 Channel 🆔 : @AlienVPN402 👽_23",
-        "💻 Channel 🆔 : @AlienVPN402 👽_24",
-        "💻 Channel 🆔 : @AlienVPN402 👽_25",
-        "💻 Channel 🆔 : @AlienVPN402 👽_26",
-        "💻 Channel 🆔 : @AlienVPN402 👽_27",
-        "💻 Channel 🆔 : @AlienVPN402 👽_28",
-        "💻 Channel 🆔 : @AlienVPN402 👽_29",
-        "💻 Channel 🆔 : @AlienVPN402 👽_30",
-        "💻 Channel 🆔 : @AlienVPN402 👽_31",
-        "💻 Channel 🆔 : @AlienVPN402 👽_32",
-        "💻 Channel 🆔 : @AlienVPN402 👽_33",
-        "💻 Channel 🆔 : @AlienVPN402 👽_34",
-        "💻 Channel 🆔 : @AlienVPN402 👽_35",
-        "💻 Channel 🆔 : @AlienVPN402 👽_36",
-        "💻 Channel 🆔 : @AlienVPN402 👽_37",
-        "💻 Channel 🆔 : @AlienVPN402 👽_38",
-        "💻 Channel 🆔 : @AlienVPN402 👽_39",
-        "💻 Channel 🆔 : @AlienVPN402 👽_40",
-        "💻 Channel 🆔 : @AlienVPN402 👽_41",
-        "💻 Channel 🆔 : @AlienVPN402 👽_42",
-        "💻 Channel 🆔 : @AlienVPN402 👽_43",
-        "💻 Channel 🆔 : @AlienVPN402 👽_44",
-        "💻 Channel 🆔 : @AlienVPN402 👽_45",
-        "💻 Channel 🆔 : @AlienVPN402 👽_46",
-        "💻 Channel 🆔 : @AlienVPN402 👽_47",
-        "💻 Channel 🆔 : @AlienVPN402 👽_48",
-        "💻 Channel 🆔 : @AlienVPN402 👽_49",
-        "💻 Channel 🆔 : @AlienVPN402 👽_50",
-        "💻 Channel 🆔 : @AlienVPN402 👽_51",
-        "💻 Channel 🆔 : @AlienVPN402 👽_52",
-        "💻 Channel 🆔 : @AlienVPN402 👽_53",
-        "💻 Channel 🆔 : @AlienVPN402 👽_54",
-        "💻 Channel 🆔 : @AlienVPN402 👽_55",
-        "💻 Channel 🆔 : @AlienVPN402 👽_56",
-        "💻 Channel 🆔 : @AlienVPN402 👽_57",
-        "💻 Channel 🆔 : @AlienVPN402 👽_58",
-        "💻 Channel 🆔 : @AlienVPN402 👽_59",
-        "💻 Channel 🆔 : @AlienVPN402 👽_60"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "1m",
-      "tolerance": 50,
-      "interrupt_exist_connections": false
-    },
-    {
-      "tag": "direct",
-      "type": "direct"
-    },
-    {
-      "tag": "block",
-      "type": "block"
-    },
-    {
-      "tag": "dns-out",
-      "type": "dns"
-    }
-  ],
-  "route": {
-    "geoip": {
-      "download_url": "https://github.com/soffchen/sing-geoip/releases/latest/download/geoip.db",
-      "download_detour": "select"
-    },
-    "geosite": {
-      "download_url": "https://github.com/soffchen/sing-geosite/releases/latest/download/geosite.db",
-      "download_detour": "select"
-    },
-    "rules": [
-      {
-        "port": 53,
-        "outbound": "dns-out"
-      },
-      {
-        "clash_mode": "Global",
-        "outbound": "select"
-      },
-      {
-        "clash_mode": "Direct",
-        "outbound": "direct"
-      },
-      {
-        "geosite": [
-          "category-ads-all"
-        ],
-        "outbound": "block"
-      },
-      {
-        "geosite": [
-          "apple@cn",
-          "category-games@cn",
-          "cn",
-          "private"
-        ],
-        "geoip": [
-          "cn",
-          "private"
-        ],
-        "outbound": "direct"
-      }
-    ],
-    "auto_detect_interface": true,
-    "final": "select"
-  },
-  "experimental": {
-    "clash_api": {
-      "external_controller": "127.0.0.1:9000",
-      "external_ui": "dashboard",
-      "store_selected": true
-    }
-  },
-  "ntp": {
-    "enabled": true,
-    "server": "time.apple.com",
-    "server_port": 123,
-    "interval": "30m",
-    "detour": "direct"
-  }
 }
